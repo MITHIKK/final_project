@@ -17,7 +17,8 @@ function Register() {
       alert("Registration successful! Please login.");
       window.location.href = "/login";
     } catch (err) {
-      alert("Registration failed");
+      const msg = err?.response?.data || err.message || "Registration failed";
+      alert(`Registration failed: ${msg}`);
     }
   };
 

@@ -11,7 +11,7 @@ function EditService() {
     lastServiceDate: "",
     nextServiceDate: "",
     lastKm: "",
-    nextKm: "",
+    nextServiceKm: "",
     notes: ""
   });
 
@@ -28,7 +28,7 @@ function EditService() {
           lastServiceDate: res.data.lastServiceDate || "",
           nextServiceDate: res.data.nextServiceDate || "",
           lastKm: res.data.lastKm || "",
-          nextKm: res.data.nextKm || "",
+          nextServiceKm: res.data.nextServiceKm || "",
           notes: res.data.notes || ""
         });
         setLoading(false);
@@ -53,7 +53,7 @@ function EditService() {
       alert("Service updated successfully");
       window.location.href = "/dashboard";
     } catch {
-      alert("Update failed");
+      alert("Update failed — check console/network for details");
     }
   };
 
@@ -99,9 +99,9 @@ function EditService() {
       />
 
       <input
-        name="nextKm"
-        value={form.nextKm}
-        placeholder="Next Km"
+        name="nextServiceKm"
+        value={form.nextServiceKm}
+        placeholder="Next Service KM"
         onChange={updateField}
       />
 

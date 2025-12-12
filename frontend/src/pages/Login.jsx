@@ -15,7 +15,8 @@ function Login() {
       localStorage.setItem("token", res.data.token);
       window.location.href = "/dashboard";
     } catch (err) {
-      alert("Invalid login");
+      const msg = err?.response?.data || err.message || "Invalid login";
+      alert(`Login failed: ${msg}`);
     }
   };
 
