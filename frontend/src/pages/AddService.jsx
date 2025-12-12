@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import API from "../api";
 
 function AddService() {
   const [form, setForm] = useState({
@@ -17,11 +17,7 @@ function AddService() {
   };
 
   const submit = async () => {
-    const token = localStorage.getItem("token");
-
-    await axios.post("http://localhost:5000/api/services", form, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
+    await API.post("/services", form);
 
     alert("Service Added!");
     window.location.href = "/dashboard";

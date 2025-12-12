@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import API from "../api";
 
 function Register() {
   const [name, setName] = useState("");
@@ -8,7 +8,7 @@ function Register() {
 
   const register = async () => {
     try {
-      await axios.post("http://localhost:5000/api/register", {
+      await API.post("/register", {
         name,
         email,
         password

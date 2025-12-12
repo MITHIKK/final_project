@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api";
 
 function Dashboard() {
   const [list, setList] = useState([]);
 
   const load = async () => {
-    const token = localStorage.getItem("token");
-    const res = await axios.get("http://localhost:5000/api/services", {
-      headers: { Authorization: `Bearer ${token}` }
-    });
+    const res = await API.get("/services");
     setList(res.data);
   };
 
   const deleteService = async (id) => {
-    const token = localStorage.getItem("token");
-
-    await axios.delete(`http://localhost:5000/api/services/${id}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-
+    await API.delete(`/services/${id}`);
     load();
   };
 
